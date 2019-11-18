@@ -29,7 +29,7 @@
     "cordova-android": "6.3.0",
     "cordova-android-support-gradle-release": "^3.0.1",
     "cordova-browser": "5.0.3",
-    "cordova-plugin-camera": "git+https://github.com/apache/cordova-plugin-camera.git",
+    "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^1.2.1",
@@ -59,7 +59,9 @@
       "cordova-android-support-gradle-release": {
         "ANDROID_SUPPORT_VERSION": "27.+"
       },
-      "cordova-plugin-camera": {}
+      "cordova-plugin-camera": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      }
     },
     "platforms": [
       "browser",
