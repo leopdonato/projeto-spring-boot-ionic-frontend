@@ -18,7 +18,7 @@ export class ProfilePage {
   cameraOn: boolean = false;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public storage: StorageService,
     public clienteService: ClienteService,
@@ -31,17 +31,17 @@ export class ProfilePage {
 
   loadData() {
     let localUser = this.storage.getLocalUser();
-    if(localUser && localUser.email){
+    if (localUser && localUser.email) {
       this.clienteService.findByEmail(localUser.email)
         .subscribe(response => {
           this.cliente = response as ClienteDTO;
           this.getImageIfExists();
         },
-        error => {
-          if (error.status === 403) {
-            this.navCtrl.setRoot('HomePage');
-          }
-        });
+          error => {
+            if (error.status === 403) {
+              this.navCtrl.setRoot('HomePage');
+            }
+          });
     }
     else {
       this.navCtrl.setRoot('HomePage');
@@ -53,7 +53,7 @@ export class ProfilePage {
       .subscribe(response => {
         this.cliente.imageUrl = `${API_CONFIG.bucketBaseUrl}/cp${this.cliente.id}.jpg`;
       },
-      error => {})
+        error => { })
   }
 
   getCameraPicture() {
@@ -68,9 +68,10 @@ export class ProfilePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-     this.picture = 'data:image/png;base64,' + imageData;
-     this.cameraOn = false;
+      this.picture = 'data:image/png;base64,' + imageData;
+      this.cameraOn = false;
     }, (err) => {
+      this.cameraOn = false;
     });
   }
 
@@ -87,9 +88,10 @@ export class ProfilePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-     this.picture = 'data:image/png;base64,' + imageData;
-     this.cameraOn = false;
+      this.picture = 'data:image/png;base64,' + imageData;
+      this.cameraOn = false;
     }, (err) => {
+      this.cameraOn = false;
     });
   }
 
@@ -99,9 +101,9 @@ export class ProfilePage {
         this.picture = null;
         this.loadData();
       },
-      error =>{
+        error => {
 
-      });
+        });
   }
 
   cancel() {
